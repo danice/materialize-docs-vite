@@ -12,6 +12,7 @@
     "@materializecss/materialize": "workspace:*"
   },
   "devDependencies": {
+    "sass": "^1.35.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.0"
   }
