@@ -11,6 +11,9 @@ importers:
       '@materializecss/materialize':
         specifier: workspace:*
         version: link:packages/materialize
+      material-icons:
+        specifier: ^1.13.8
+        version: 1.13.8
     devDependencies:
       sass:
         specifier: ^1.35.2
@@ -5744,6 +5747,10 @@ packages:
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: true
+
+  /material-icons@1.13.8:
+    resolution: {integrity: sha512-vnLGXKa/AwFUxUgkiX39EpYVFttPhDQcKdVylIqmUUqz+Eo/O9A3BkdPCU3/G5cJOTezHi5B/b8sEpKYgUNAwQ==}
+    dev: false
 
   /math-random@1.0.4:
     resolution: {integrity: sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==}
