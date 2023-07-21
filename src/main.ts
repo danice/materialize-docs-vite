@@ -1,17 +1,17 @@
 import './style.scss'
-import { M } from '@materializecss/materialize';
+import { M }  from '@materializecss/materialize'
 
 
 document.addEventListener("DOMContentLoaded", function() {
   
-    function rgb2hex(rgb) {
+    function rgb2hex(rgb : string) {
       if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
-      rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-      if (rgb === null) return 'N/A';
-      function hex(x) {
+      const rgbMatch = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      if (rgbMatch === null) return 'N/A';
+      function hex(x: string) {
         return ('0' + parseInt(x).toString(16)).slice(-2);
       }
-      return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+      return '#' + hex(rgbMatch[1]) + hex(rgbMatch[2]) + hex(rgbMatch[3]);
     }
   
     // Detect touch screen and enable scrollbar if necessary
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         const url = data.html_url;
         const sha = data.sha;
-        const date = timeago.format(data.commit.author.date);
+        const date = data.commit.author.date;
         (githubCommitElem.querySelector('.date') as HTMLElement).innerText = date;
         (githubCommitElem.querySelector('.sha') as HTMLElement).innerText = sha;
         (githubCommitElem.querySelector('.sha') as HTMLLinkElement).href = url;
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle Flow Text
     const toggleFlowTextButton = document.querySelector('#flow-toggle');
     const flowDemoParagraphs = document.querySelectorAll('#flow-text-demo p');
-    toggleFlowTextButton?.addEventListener('click', e => {
+    toggleFlowTextButton?.addEventListener('click', () => {
       flowDemoParagraphs.forEach(p => {
         p.classList.toggle('flow-text');
       });
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Toggle Containers on page
     const toggleContainersButton = document.querySelector('#container-toggle-button');
-    toggleContainersButton?.addEventListener('click', e => {
+    toggleContainersButton?.addEventListener('click', () => {
       document.querySelectorAll('body .browser-window .container, .had-container').forEach(el => {
         el.classList.toggle('had-container');
         el.classList.toggle('container');
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const scaleDemoElem = document.querySelector('#scale-demo');
     const scaleDemoTriggerElem = document.querySelector('#scale-demo-trigger');
     if (scaleDemoElem && scaleDemoTriggerElem) {
-      scaleDemoTriggerElem.addEventListener('click', e => {
+      scaleDemoTriggerElem.addEventListener('click', () => {
         scaleDemoElem.classList.toggle('scale-out');
       });
     }
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
     M.Carousel.init(document.querySelectorAll('.carousel.carousel-slider'), {
       fullWidth: true,
       indicators: true,
-      onCycleTo: function(item, dragged) {
+      onCycleTo: () => {
       }
     });
   
@@ -228,8 +228,8 @@ document.addEventListener("DOMContentLoaded", function() {
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
     
     const tts = M.TapTarget.init(document.querySelectorAll('.tap-target'), {});
-    document.querySelector('#open-taptarget')?.addEventListener('click', e => tts[0].open());
-    document.querySelector('#close-taptarget')?.addEventListener('click', e => tts[0].close());
+    document.querySelector('#open-taptarget')?.addEventListener('click', () => tts[0].open());
+    document.querySelector('#close-taptarget')?.addEventListener('click', () => tts[0].close());
   
     M.FormSelect.init(document.querySelectorAll('select:not(.disabled)'), {});
   
